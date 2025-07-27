@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_template_form_view_inherit_is_book" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.is.book</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']/span[last()]" position="after">
+                <span class="d-inline-flex ms-3">
+                    <field name="is_book" />
+                    <label for="is_book" />
+                </span>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page
+                    string="Información del Libro"
+                    name="book_info"
+                    invisible="is_book==False"
+                >
+                    <group>
+                        <group string="Detalles de Publicación">
+                            <field name="binding" />
+                            <field name="edition" />
+                            <field name="publication_date" />
+                            <field name="publication_year" />
+                            <field name="number_of_pages" />
+                            <field name="language" context="{'active_test': False}" />
+                        </group>
+                        <group string="Detalles de Biblioteca">
+                            <field name="isbn" />
+                            <field name="condition" />
+                            <field name="copies" />
+                            <field name="rating" widget="priority" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='book_info']/group[1]" position="after">
+                <group>
+                    <group string="Imagen Portada">
+                        <div class="text-center">
+                            <field name="image_512" widget="image" nolabel="1" />
+                        </div>
+                    </group>
+                    <group string="Personas y Géneros">
+                        <field
+                            name="publisher_id"
+                            domain="[('is_publisher', '=', True)]"
+                        />
+                        <field
+                            name="author_ids"
+                            widget="many2many_tags"
+                            domain="[('is_author', '=', True)]"
+                        />
+                        <field name="genre_ids" widget="many2many_tags" />
+                    </group>
+                </group>
+                <group string="synopsis">
+                <field name="synopsis" nolabel="1" />
+                </group>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button
+                    name="button_check_isbn"
+                    type="object"
+                    string="Verificar ISBN"
+                    class="oe_highlight"
+                    invisible="not is_book"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_search_view_inherit_is_book" model="ir.ui.view">
+        <field name="name">product.template.search.inherit.is_book</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='services']" position="after">
+                <separator />
+                <filter
+                    name="filter_is_book"
+                    string="Libros"
+                    domain="[('is_book', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
