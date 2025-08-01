@@ -4,9 +4,9 @@
         <field name="name">product.book.genre.list</field>
         <field name="model">product.book.genre</field>
         <field name="arch" type="xml">
-            <list string="Géneros de Libros">
-                <field name="complete_name" string="Nombre" />
-                <field name="parent_id" string="Categoría Padre" />
+            <list string="Genres">
+                <field name="complete_name"/>
+                <field name="parent_id" />
             </list>
         </field>
     </record>
@@ -15,14 +15,14 @@
         <field name="name">product.book.genre.form</field>
         <field name="model">product.book.genre</field>
         <field name="arch" type="xml">
-            <form string="Género de Libro">
+            <form>
                 <sheet>
                     <group>
-                        <field name="name" string="Nombre" />
-                        <field name="parent_id" string="Categoría Padre" />
+                        <field name="name" />
+                        <field name="parent_id" />
                     </group>
                     <notebook>
-                        <page string="Notas">
+                        <page string="Notes">
                             <field name="notes" />
                         </page>
                     </notebook>
@@ -32,30 +32,18 @@
     </record>
 
     <record id="action_product_book_genre" model="ir.actions.act_window">
-        <field name="name">Géneros de Libros</field>
+        <field name="name">Book Genres</field>
         <field name="res_model">product.book.genre</field>
         <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Crea un nuevo género de libro
+                Create a new genre of book
+
             </p>
         </field>
     </record>
 
-    <menuitem
-        id="menu_libros_separator"
-        name="Libros"
-        parent="stock.menu_stock_config_settings"
-        sequence="49"
-    />
 
-    <menuitem
-        id="menu_product_book_genre_config"
-        name="Géneros de Libros"
-        parent="menu_libros_separator"
-        action="action_product_book_genre"
-        sequence="10"
-    />
 
 
 </odoo>
