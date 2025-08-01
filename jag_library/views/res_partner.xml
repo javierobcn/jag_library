@@ -7,11 +7,7 @@
         <field name="arch" type="xml">
             <field name="company_type" position="replace">
                 <div class="d-flex align-items-center">
-                    <field
-                        name="company_type"
-                        widget="radio"
-                        options="{'horizontal': true}"
-                    />
+                    <field name="company_type" widget="radio" options="{'horizontal': true}" />
                     <span invisible="is_company" class="o_row ms-4">
                         <field name="is_author" nolabel="1" />
                         <label for="is_author" />
@@ -23,11 +19,7 @@
                 </div>
             </field>
             <xpath expr="//page[@name='internal_notes']" position="after">
-                <page
-                    name="books"
-                    string="Libros"
-                    invisible="not is_author and not is_publisher"
-                >
+                <page name="books" string="books" invisible="not is_author and not is_publisher">
                     <group invisible="not is_author">
                         <field name="authored_book_ids" nolabel="1">
                             <list>
@@ -36,10 +28,7 @@
                                 <field name="edition" />
                                 <field name="publication_year" />
                                 <field name="number_of_pages" />
-                                <field
-                                    name="language"
-                                    context="{'active_test': False}"
-                                />
+                                <field name="language" context="{'active_test': False}" />
                             </list>
                         </field>
                     </group>
@@ -52,10 +41,7 @@
                                 <field name="edition" />
                                 <field name="publication_year" />
                                 <field name="number_of_pages" />
-                                <field
-                                    name="language"
-                                    context="{'active_test': False}"
-                                />
+                                <field name="language" context="{'active_test': False}" />
                             </list>
                         </field>
                     </group>
@@ -71,21 +57,9 @@
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='type_company']" position="after">
                 <separator />
-                <filter
-                    string="Contactos"
-                    name="contacts_only"
-                    domain="[('is_author', '=', False), ('is_publisher', '=', False)]"
-                />
-                <filter
-                    string="Autores"
-                    name="authors"
-                    domain="[('is_author', '=', True)]"
-                />
-                <filter
-                    string="Editoriales"
-                    name="publishers"
-                    domain="[('is_publisher', '=', True)]"
-                />
+                <filter string="Contacts" name="contacts_only" domain="[('is_author', '=', False), ('is_publisher', '=', False)]" />
+                <filter string="Authors" name="authors" domain="[('is_author', '=', True)]" />
+                <filter string="Publishers" name="publishers" domain="[('is_publisher', '=', True)]" />
             </xpath>
         </field>
     </record>
