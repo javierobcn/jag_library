@@ -7,8 +7,6 @@ class ProductTemplate(models.Model):
 
     is_book = fields.Boolean(string="Is a book")
     isbn = fields.Char("ISBN")
-
-    # Numeric fields:
     number_of_pages = fields.Integer()
     copies = fields.Integer(default=1)
     rating = fields.Selection(
@@ -20,8 +18,6 @@ class ProductTemplate(models.Model):
             ("5", "5"),
         ],
     )
-
-    # Date and time fields:
     date_start_reading = fields.Date()
     date_end_reading = fields.Date()
     publication_year = fields.Integer(
@@ -29,11 +25,8 @@ class ProductTemplate(models.Model):
         store=True,
     )
     publication_date = fields.Date()
-
-    # Relational Fields
     publisher_id = fields.Many2one(
         comodel_name="res.partner",
-        string="Editorial",
         domain=[("is_publisher", "=", True)],
     )
     author_ids = fields.Many2many(
@@ -41,39 +34,32 @@ class ProductTemplate(models.Model):
         "res_partner_product_template_rel",
         "book_id",
         "partner_id",
-        string="Autores",
         domain=[("is_author", "=", True)],
     )
     genre_ids = fields.Many2many(
         "product.book.genre",
-        string="Genre",
         index=True,
     )
     language = fields.Many2one("res.lang", domain="[]")
-
     binding = fields.Selection(
         [
-            ("hardcover", "Tapa Dura"),
-            ("paperback", "Tapa Blanda / Rústica"),
-            ("spiral", "Espiral"),
-            ("ebook", "eBook"),
-            ("other", "Otro"),
+            ("hardcover", _("Hard cover")),
+            ("paperback", _("paperback")),
+            ("spiral", _("Spiral")),
+            ("ebook", _("eBook")),
+            ("other", _("Other")),
         ],
-        string="Encuadernación",
     )
-
-    edition = fields.Char(string="Edición")
-
-    synopsis = fields.Html(string="Sinopsis")
-
+    edition = fields.Char()
+    synopsis = fields.Html()
+    reading_notes = fields.Html()
     condition = fields.Selection(
         [
-            ("new", "Nuevo"),
-            ("good", "Bueno"),
-            ("used", "Usado"),
-            ("damaged", "Dañado"),
+            ("new", _("New")),
+            ("good", _("Good")),
+            ("used", _("Used")),
+            ("damaged", _("Damaged")),
         ],
-        string="Estado",
         default="new",
     )
 
@@ -87,13 +73,14 @@ class ProductTemplate(models.Model):
         (
             "library_book_name_date_uq",
             "UNIQUE (name, publication_date)",
-            "Book title and publication date must be unique.",
+            _("Book title and publication date must be unique."),
         ),
         (
             "library_book_check_date",
             "CHECK (publication_date <= current_date)",
-            "Publication date must not be in the future.",
+            _("Publication date must not be in the future."),
         ),
+        ("isbn_uniq", "UNIQUE (isbn)", _("ISBN must be unique.")),
     ]
 
     @api.constrains("isbn")

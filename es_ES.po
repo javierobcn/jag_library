@@ -1,0 +1,442 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* jag_library
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-01 18:35+0000\n"
+"PO-Revision-Date: 2025-08-01 18:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__author_ids
+#: model:ir.model.fields,field_description:jag_library.field_product_template__author_ids
+msgid "Author"
+msgstr "Autor"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_res_partner__authored_book_ids
+#: model:ir.model.fields,field_description:jag_library.field_res_users__authored_book_ids
+msgid "Authored Books"
+msgstr "Libros de autor"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.view_res_partner_filter_library
+msgid "Authors"
+msgstr "Autores"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__binding
+#: model:ir.model.fields,field_description:jag_library.field_product_template__binding
+msgid "Binding"
+msgstr "Encuadernación"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__book_ids
+msgid "Book"
+msgstr "Libro"
+
+#. module: jag_library
+#: model:ir.ui.menu,name:jag_library.menu_product_books
+msgid "Book Catalog"
+msgstr "Catálogo de Libros"
+
+#. module: jag_library
+#: model:ir.model,name:jag_library.model_product_book_genre
+msgid "Book Genre"
+msgstr "Género de Libro"
+
+#. module: jag_library
+#: model:ir.actions.act_window,name:jag_library.action_product_book_genre
+#: model:ir.ui.menu,name:jag_library.menu_product_book_genre_config
+msgid "Book Genres"
+msgstr "Géneros de Libros"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Book Information"
+msgstr "Información del Libro"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.constraint,message:jag_library.constraint_product_template_library_book_name_date_uq
+msgid "Book title and publication date must be unique."
+msgstr "Título del libro y fecha de publicación deben ser únicos."
+
+#. module: jag_library
+#: model:ir.actions.act_window,name:jag_library.action_product_books_kanban
+#: model:ir.ui.menu,name:jag_library.menu_books_separator
+msgid "Books"
+msgstr "Libros"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__child_ids
+msgid "Child Categories"
+msgstr "Categorías Hijas"
+
+#. module: jag_library
+#: model_terms:ir.actions.act_window,help:jag_library.action_product_books_kanban
+msgid "Click \"New\" to add the first book to your catalog."
+msgstr "Clic en \"Nuevo\" para añadir el primer libro a tu catálogo."
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__complete_name
+msgid "Complete Name"
+msgstr "Nombre Completo"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__condition
+#: model:ir.model.fields,field_description:jag_library.field_product_template__condition
+msgid "Condition"
+msgstr "Estado"
+
+#. module: jag_library
+#: model:ir.model,name:jag_library.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.view_res_partner_filter_library
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__copies
+#: model:ir.model.fields,field_description:jag_library.field_product_template__copies
+msgid "Copies"
+msgstr "Copias"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Cover Image"
+msgstr "Imagen de Portada"
+
+#. module: jag_library
+#: model_terms:ir.actions.act_window,help:jag_library.action_product_book_genre
+msgid "Create a new genre of book"
+msgstr "Crea un nuevo género de libro"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__condition__damaged
+msgid "Damaged"
+msgstr "Dañado"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__date_end_reading
+#: model:ir.model.fields,field_description:jag_library.field_product_template__date_end_reading
+msgid "Date End Reading"
+msgstr "Fecha Fin de Lectura"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__date_start_reading
+#: model:ir.model.fields,field_description:jag_library.field_product_template__date_start_reading
+msgid "Date Start Reading"
+msgstr "Fecha Inicio de Lectura"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__display_name
+msgid "Display Name"
+msgstr "Nombre para Mostrar"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__edition
+#: model:ir.model.fields,field_description:jag_library.field_product_template__edition
+msgid "Edition"
+msgstr "Edición"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__genre_ids
+#: model:ir.model.fields,field_description:jag_library.field_product_template__genre_ids
+msgid "Genre"
+msgstr "Género"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.view_product_book_genre_list
+msgid "Genres"
+msgstr "Géneros"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__condition__good
+msgid "Good"
+msgstr "Bueno"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__hardcover
+msgid "Hard cover"
+msgstr "Cubierta dura"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__id
+msgid "ID"
+msgstr "ID"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+msgid "ISBN {} is invalid"
+msgstr "ISBN {} es inválido"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__is_book
+#: model:ir.model.fields,field_description:jag_library.field_product_template__is_book
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_search_view_inherit_is_book
+msgid "Is Book"
+msgstr "Es Libro"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_res_partner__is_author
+#: model:ir.model.fields,field_description:jag_library.field_res_users__is_author
+msgid "Is author"
+msgstr "Es autor"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_res_partner__is_publisher
+#: model:ir.model.fields,field_description:jag_library.field_res_users__is_publisher
+msgid "Is publisher"
+msgstr "Es editor"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__isbn
+#: model:ir.model.fields,field_description:jag_library.field_product_template__isbn
+msgid "Isbn"
+msgstr "ISBN"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__language
+#: model:ir.model.fields,field_description:jag_library.field_product_template__language
+msgid "Language"
+msgstr "Idioma"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Library Details"
+msgstr "Detalles de Biblioteca"
+
+#. module: jag_library
+#: model:res.groups,name:jag_library.library_group_manager
+msgid "Manager"
+msgstr "Gestor"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__condition__new
+msgid "New"
+msgstr "Nuevo"
+
+#. module: jag_library
+#: model_terms:ir.actions.act_window,help:jag_library.action_product_books_kanban
+msgid "No books created yet!"
+msgstr "No se han creado libros todavía!"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__notes
+#: model_terms:ir.ui.view,arch_db:jag_library.view_product_book_genre_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__number_of_pages
+#: model:ir.model.fields,field_description:jag_library.field_product_template__number_of_pages
+msgid "Number Of Pages"
+msgstr "Número de Páginas"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__other
+msgid "Other"
+msgstr "Otro"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__parent_id
+msgid "Parent"
+msgstr "Padre"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__parent_path
+msgid "Parent Path"
+msgstr "Path Padre"
+
+#. module: jag_library
+#: model:ir.model,name:jag_library.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: jag_library
+#: model:ir.model,name:jag_library.model_product_product
+msgid "Product Variant"
+msgstr "Variante de producto"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+msgid "Provide an ISBN for {} "
+msgstr "Proporciona un ISBN para {} "
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__publication_date
+#: model:ir.model.fields,field_description:jag_library.field_product_template__publication_date
+msgid "Publication Date"
+msgstr "Fecha de Publicación"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Publication Details"
+msgstr "Detalles de Publicación"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__publication_year
+#: model:ir.model.fields,field_description:jag_library.field_product_template__publication_year
+msgid "Publication Year"
+msgstr "Año de Publicación"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.constraint,message:jag_library.constraint_product_template_library_book_check_date
+msgid "Publication date must not be in the future."
+msgstr "Publicación no debe ser en el futuro."
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_res_partner__published_book_ids
+#: model:ir.model.fields,field_description:jag_library.field_res_users__published_book_ids
+msgid "Published Books"
+msgstr "Libros Publicados"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__publisher_id
+#: model:ir.model.fields,field_description:jag_library.field_product_template__publisher_id
+msgid "Publisher"
+msgstr "Editor"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Publisher and Authors"
+msgstr "Editor y Autores"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.view_res_partner_filter_library
+msgid "Publishers"
+msgstr "Editores"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__rating
+#: model:ir.model.fields,field_description:jag_library.field_product_template__rating
+msgid "Rating"
+msgstr "Calificación"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Reading"
+msgstr "Lectura"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__reading_notes
+#: model:ir.model.fields,field_description:jag_library.field_product_template__reading_notes
+msgid "Reading Notes"
+msgstr "Notas de Lectura"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Reading notes"
+msgstr "Notas de lectura"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__spiral
+msgid "Spiral"
+msgstr "Espiral"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__synopsis
+#: model:ir.model.fields,field_description:jag_library.field_product_template__synopsis
+msgid "Synopsis"
+msgstr "Sinopsis"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__condition__used
+msgid "Used"
+msgstr "Usado"
+
+#. module: jag_library
+#: model:res.groups,name:jag_library.library_group_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Verify ISBN"
+msgstr "Verificar ISBN"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.view_partner_form
+msgid "books"
+msgstr "Libros"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__ebook
+msgid "eBook"
+msgstr "Ebook"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__paperback
+msgid "paperback"
+msgstr "Tapa blanda"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "synopsis"
+msgstr "sinopsis"
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+msgid "{} ISBN is invalid"
+msgstr "IsBN {} es inválido"

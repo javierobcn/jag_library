@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
     <record id="product_template_form_view_inherit_is_book" model="ir.ui.view">
         <field name="name">product.template.form.inherit.is.book</field>
         <field name="model">product.template</field>
@@ -12,13 +13,9 @@
                 </span>
             </xpath>
             <xpath expr="//notebook" position="inside">
-                <page
-                    string="Información del Libro"
-                    name="book_info"
-                    invisible="is_book==False"
-                >
+                <page string="Book Information" name="book_info" invisible="is_book==False">
                     <group>
-                        <group string="Detalles de Publicación">
+                        <group string="Publication Details">
                             <field name="binding" />
                             <field name="edition" />
                             <field name="publication_date" />
@@ -26,7 +23,8 @@
                             <field name="number_of_pages" />
                             <field name="language" context="{'active_test': False}" />
                         </group>
-                        <group string="Detalles de Biblioteca">
+                        <group string="Library Details">
+                            <field name="genre_ids" widget="many2many_tags" />
                             <field name="isbn" />
                             <field name="condition" />
                             <field name="copies" />
@@ -37,36 +35,30 @@
             </xpath>
             <xpath expr="//page[@name='book_info']/group[1]" position="after">
                 <group>
-                    <group string="Imagen Portada">
+                    <group string="Cover Image">
                         <div class="text-center">
                             <field name="image_512" widget="image" nolabel="1" />
                         </div>
                     </group>
-                    <group string="Personas y Géneros">
-                        <field
-                            name="publisher_id"
-                            domain="[('is_publisher', '=', True)]"
-                        />
-                        <field
-                            name="author_ids"
-                            widget="many2many_tags"
-                            domain="[('is_author', '=', True)]"
-                        />
-                        <field name="genre_ids" widget="many2many_tags" />
+                    <group string="Publisher and Authors">
+                        <field name="publisher_id" domain="[('is_publisher', '=', True)]" />
+                        <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" />
+                    </group>
+                    <group string="Reading">
+                        <field name="date_start_reading" />
+                        <field name="date_end_reading" />
                     </group>
                 </group>
                 <group string="synopsis">
-                <field name="synopsis" nolabel="1" />
+                    <field name="synopsis" nolabel="1" />
                 </group>
+                <group string="Reading notes">
+                    <field name="reading_notes" nolabel="1" />
+                </group>
+
             </xpath>
             <xpath expr="//header" position="inside">
-                <button
-                    name="button_check_isbn"
-                    type="object"
-                    string="Verificar ISBN"
-                    class="oe_highlight"
-                    invisible="not is_book"
-                />
+                <button name="button_check_isbn" type="object" string="Verify ISBN" class="oe_highlight" invisible="not is_book" />
             </xpath>
         </field>
     </record>
@@ -77,13 +69,28 @@
         <field name="arch" type="xml">
             <xpath expr="//filter[@name='services']" position="after">
                 <separator />
-                <filter
-                    name="filter_is_book"
-                    string="Libros"
-                    domain="[('is_book', '=', True)]"
-                />
+                <filter name="filter_is_book" string="Is Book" domain="[('is_book', '=', True)]" />
             </xpath>
         </field>
     </record>
+
+    <record id="action_product_books_kanban" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('is_book', '=', True)]</field>
+        <field name="context">{'default_is_book': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No books created yet!
+            </p>
+            <p>
+                Click "New" to add the first book to your catalog.
+            </p>
+        </field>
+    </record>
+    <menuitem id="menu_books_separator" name="Books" parent="stock.menu_stock_inventory_control" sequence="9999" />
+    <menuitem id="menu_product_book_genre_config" name="Book Genres" parent="menu_books_separator" action="action_product_book_genre" sequence="10" />
+    <menuitem id="menu_product_books" name="Book Catalog" parent="menu_books_separator" action="action_product_books_kanban" sequence="20"/>
 
 </odoo>
