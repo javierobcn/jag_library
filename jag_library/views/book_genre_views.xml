@@ -7,6 +7,7 @@
             <list string="Genres">
                 <field name="complete_name"/>
                 <field name="parent_id" />
+                <field name="color" widget="color_picker"/>
             </list>
         </field>
     </record>

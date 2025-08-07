@@ -25,7 +25,7 @@
                             <field name="language" context="{'active_test': False}" />
                         </group>
                         <group string="Library Details">
-                            <field name="genre_ids" widget="many2many_tags" />
+                            <field name="genre_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
                             <field name="isbn" />
                             <field name="condition" />
                             <field name="copies" />
@@ -120,7 +120,7 @@
                                 <div class="mt-auto pt-2 border-top">
                                     <div t-if="record.genre_ids.raw_value.length > 0" class="d-flex align-items-start" title="Géneros">
                                         <i class="oi oi-tag me-2 mt-1 flex-shrink-0"/>
-                                        <div class="w-100"><field name="genre_ids" widget="many2many_tags"/></div>
+                                        <div class="w-100"><field name="genre_ids" widget="many2many_tags" options="{'color_field': 'color'}" /></div>
                                     </div>
                                 </div>
                             </div>
