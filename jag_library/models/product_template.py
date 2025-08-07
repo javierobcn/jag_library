@@ -173,6 +173,7 @@ class ProductBookGenre(models.Model):
     book_ids = fields.Many2many("product.template")
     child_ids = fields.One2many(_name, "parent_id", "Child Categories")
     notes = fields.Text()
+    color = fields.Integer()
 
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
