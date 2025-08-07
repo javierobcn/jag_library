@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+    <!-- VISTA FORMULARIO HEREDADA PARA PRODUCTOS -->
     <record id="product_template_form_view_inherit_is_book" model="ir.ui.view">
         <field name="name">product.template.form.inherit.is.book</field>
         <field name="model">product.template</field>
@@ -31,39 +32,38 @@
                             <field name="rating" widget="priority" />
                         </group>
                     </group>
+                    <group>
+                        <group string="Cover Image">
+                            <div class="text-center">
+                                <field name="image_512" widget="image" nolabel="1" />
+                            </div>
+                        </group>
+                        <group string="Publisher and Authors">
+                            <field name="publisher_id" domain="[('is_publisher', '=', True)]" />
+                            <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" />
+                        </group>
+                        <group string="Reading">
+                            <field name="date_start_reading" />
+                            <field name="date_end_reading" />
+                        </group>
+                    </group>
+                    <group string="Synopsis">
+                        <field name="synopsis" nolabel="1" />
+                    </group>
+                    <group string="Reading Notes">
+                        <field name="reading_notes" nolabel="1" />
+                    </group>
                 </page>
-            </xpath>
-            <xpath expr="//page[@name='book_info']/group[1]" position="after">
-                <group>
-                    <group string="Cover Image">
-                        <div class="text-center">
-                            <field name="image_512" widget="image" nolabel="1" />
-                        </div>
-                    </group>
-                    <group string="Publisher and Authors">
-                        <field name="publisher_id" domain="[('is_publisher', '=', True)]" />
-                        <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" />
-                    </group>
-                    <group string="Reading">
-                        <field name="date_start_reading" />
-                        <field name="date_end_reading" />
-                    </group>
-                </group>
-                <group string="synopsis">
-                    <field name="synopsis" nolabel="1" />
-                </group>
-                <group string="Reading notes">
-                    <field name="reading_notes" nolabel="1" />
-                </group>
-
             </xpath>
             <xpath expr="//header" position="inside">
                 <button name="button_check_isbn" type="object" string="Verify ISBN" class="oe_highlight" invisible="not is_book" />
             </xpath>
         </field>
     </record>
+
+    <!-- VISTA BÚSQUEDA HEREDADA PARA PRODUCTOS -->
     <record id="product_template_search_view_inherit_is_book" model="ir.ui.view">
-        <field name="name">product.template.search.inherit.is_book</field>
+        <field name="name">product.template.search.inherit.is.book</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_search_view" />
         <field name="arch" type="xml">
@@ -74,10 +74,67 @@
         </field>
     </record>
 
+    <!-- VISTA KANBAN PARA LIBROS (CORREGIDA) -->
+    <record id="product_template_kanban_view_books" model="ir.ui.view">
+        <field name="name">product.template.kanban.books.final.fixed</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <kanban records_per_row="4">
+                <field name="name"/>
+                <field name="image_1920"/>
+                <field name="publisher_id"/>
+                <field name="author_ids"/>
+                <field name="number_of_pages"/>
+                <field name="genre_ids"/>
+                <templates>
+                    <!-- CORRECCIÓN 2: El nombre de la plantilla ahora es 'card' -->
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click d-flex flex-row p-0">
+                            <div class="o_kanban_image_fill_left"
+                                 t-attf-style="background-image: url(#{kanban_image('product.template', 'image_1920', record.id.raw_value)}); flex-basis: 160px; flex-shrink: 0;"/>
+                            <div class="oe_kanban_details d-flex flex-column flex-grow-1 p-3">
+                                <div>
+                                    <strong class="o_kanban_record_title mb-2 d-block"><field name="name"/></strong>
+                                    <div class="d-flex w-100 text-muted">
+                                        <div class="w-50 pe-2">
+                                            <div t-if="record.publisher_id.value" title="Editorial" class="mb-1 text-truncate"><i class="oi oi-building me-1"/><span><field name="publisher_id"/></span></div>
+                                            <div t-if="record.number_of_pages.raw_value" title="Páginas" class="text-truncate"><i class="oi oi-page me-1"/><span><field name="number_of_pages"/> páginas</span></div>
+                                        </div>
+                                        <div class="w-50">
+                                            <div t-if="record.author_ids.raw_value.length > 0" title="Autor(es)" class="d-flex align-items-start">
+                                                <i class="oi oi-community me-1 mt-1 flex-shrink-0"/>
+                                                <div class="w-100"><field name="author_ids" widget="many2many_tags"/></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-auto pt-2 border-top">
+                                    <div t-if="record.genre_ids.raw_value.length > 0" class="d-flex align-items-start" title="Géneros">
+                                        <i class="oi oi-tag me-1 mt-1 flex-shrink-0"/>
+                                        <div class="w-100"><field name="genre_ids" widget="many2many_tags"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+                <!-- CORRECCIÓN 1: La etiqueta <style> va DENTRO de <kanban> -->
+                <style>
+                    .o_kanban_image_fill_left {
+                        background-size: cover;
+                        background-position: center;
+                    }
+                </style>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ACCIÓN DE VENTANA PARA LIBROS -->
     <record id="action_product_books_kanban" model="ir.actions.act_window">
         <field name="name">Books</field>
         <field name="res_model">product.template</field>
         <field name="view_mode">kanban,list,form</field>
+        <field name="view_id" ref="jag_library.product_template_kanban_view_books"/>
         <field name="domain">[('is_book', '=', True)]</field>
         <field name="context">{'default_is_book': True}</field>
         <field name="help" type="html">
@@ -89,6 +146,8 @@
             </p>
         </field>
     </record>
+
+    <!-- MENÚS (CORRECCIÓN 3: Menú de Géneros RESTAURADO) -->
     <menuitem id="menu_books_separator" name="Books" parent="stock.menu_stock_inventory_control" sequence="9999" />
     <menuitem id="menu_product_book_genre_config" name="Book Genres" parent="menu_books_separator" action="action_product_book_genre" sequence="10" />
     <menuitem id="menu_product_books" name="Book Catalog" parent="menu_books_separator" action="action_product_books_kanban" sequence="20"/>
