@@ -154,6 +154,18 @@ class ProductTemplate(models.Model):
     #     )
 
 
+class ProductProduct(models.Model):
+    _inherit = "product.product"
+
+    def button_check_isbn(self):
+        """
+        Delegates the ISBN check to the product template.
+        The button is on the product.product form, but the logic and fields
+        (like ISBN) are on the product.template.
+        """
+        return self.product_tmpl_id.button_check_isbn()
+
+
 class ProductBookGenre(models.Model):
     _name = "product.book.genre"
     _description = "Book Genre"
