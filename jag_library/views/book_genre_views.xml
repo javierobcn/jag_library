@@ -20,6 +20,7 @@
                     <group>
                         <field name="name" />
                         <field name="parent_id" />
+                        <field name="color" widget="color_picker"/>
                     </group>
                     <notebook>
                         <page string="Notes">
