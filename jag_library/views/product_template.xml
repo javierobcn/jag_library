@@ -39,8 +39,8 @@
                             </div>
                         </group>
                         <group string="Publisher and Authors">
-                            <field name="publisher_id" domain="[('is_publisher', '=', True)]" />
-                            <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" />
+                            <field name="publisher_id" domain="[('is_publisher', '=', True)]" context="{'default_is_company': True, 'default_is_publisher': True}" />
+                            <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" context="{'default_is_author': True}" />
                         </group>
                         <group string="Reading">
                             <field name="date_start_reading" />
