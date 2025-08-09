@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-    <!-- VISTA FORMULARIO HEREDADA PARA PRODUCTOS -->
     <record id="product_template_form_view_inherit_is_book" model="ir.ui.view">
         <field name="name">product.template.form.inherit.is.book</field>
         <field name="model">product.template</field>
@@ -33,13 +31,9 @@
                         </group>
                     </group>
                     <group>
-                        <group string="Cover Image">
-                            <div class="text-center">
-                                <field name="image_512" widget="image" nolabel="1" />
-                            </div>
-                        </group>
                         <group string="Publisher and Authors">
                             <field name="publisher_id" domain="[('is_publisher', '=', True)]" context="{'default_is_company': True, 'default_is_publisher': True}" />
+                            <field name="publisher_country_id" />
                             <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" context="{'default_is_author': True}" />
                         </group>
                         <group string="Reading">
@@ -54,6 +48,20 @@
                         <field name="reading_notes" nolabel="1" />
                     </group>
                 </page>
+                <page string="Images" name="cover_image" invisible="is_book==False">
+                        <group>
+                            <group string="Cover Image">
+                                <div class="text-center">
+                                    <field name="image_512" widget="image" nolabel="1" />
+                                </div>
+                            </group>
+                            <group string="Back Cover">
+                                <div class="text-center">
+                                    <field name="image_back_cover_512" widget="image" nolabel="1" />
+                                </div>
+                            </group>
+                        </group>
+                    </page>
             </xpath>
             <xpath expr="//header" position="inside">
                 <button name="button_check_isbn" type="object" string="Verify ISBN" class="oe_highlight" invisible="not is_book" />
@@ -61,7 +69,6 @@
         </field>
     </record>
 
-    <!-- VISTA BÚSQUEDA HEREDADA PARA PRODUCTOS -->
     <record id="product_template_search_view_inherit_is_book" model="ir.ui.view">
         <field name="name">product.template.search.inherit.is.book</field>
         <field name="model">product.template</field>
@@ -74,7 +81,6 @@
         </field>
     </record>
 
-    <!-- VISTA KANBAN PARA LIBROS (REFINADA) -->
     <record id="product_template_kanban_view_books" model="ir.ui.view">
         <field name="name">product.template.kanban.books.refined</field>
         <field name="model">product.template</field>
@@ -158,8 +164,7 @@
     </record>
 
     <!-- MENÚS -->
-    <menuitem id="menu_books_separator" name="Books" parent="stock.menu_stock_inventory_control" sequence="9999" />
-    <menuitem id="menu_product_book_genre_config" name="Book Genres" parent="menu_books_separator" action="action_product_book_genre" sequence="10" />
-    <menuitem id="menu_product_books" name="Book Catalog" parent="menu_books_separator" action="action_product_books_kanban" sequence="20"/>
-
+    <!-- <menuitem id="menu_books_separator" name="Books" parent="stock.menu_stock_inventory_control" sequence="9999" /> -->
+    <menuitem id="menu_product_books" name="Book Catalog" parent="jag_library.menu_library_root" action="action_product_books_kanban" sequence="10"/>
+    <menuitem id="menu_product_book_genre_config" name="Book Genres" parent="jag_library.menu_library_root" action="action_product_book_genre" sequence="20" />
 </odoo>

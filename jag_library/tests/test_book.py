@@ -185,3 +185,49 @@ class TestBook(TransactionCase):
         self.assertEqual(action["type"], "ir.actions.client")
         self.assertEqual(action["tag"], "display_notification")
         self.assertEqual(action["params"]["type"], "info")
+
+    def test_publisher_country_related_field(self):
+        "Test 11: Publisher country as a related field"
+        # 1. Check that the related field gets the correct value
+        country_spain = self.env.ref("base.es")
+        self.publisher_planeta.country_id = country_spain
+        self.assertEqual(self.book_quijote.publisher_country_id, country_spain)
+
+        # 2. Check that updating the related field updates the source field
+        country_portugal = self.env.ref("base.pt")
+        self.book_quijote.publisher_country_id = country_portugal
+        self.assertEqual(self.publisher_planeta.country_id, country_portugal)
+
+        # 3. Check that searching on the related field works
+        found_books = self.Book.search(
+            [("publisher_country_id", "=", country_portugal.id)]
+        )
+        self.assertIn(self.book_quijote, found_books)
+
+    def test_publisher_country_without_publisher(self):
+        "Test 12: Country field for a book without a publisher"
+        book_no_publisher = self.Book.create(
+            {
+                "name": "Book without Publisher",
+            }
+        )
+        self.assertFalse(
+            book_no_publisher.publisher_country_id,
+            "The publisher country should be empty if there is no publisher.",
+        )
+
+    def test_genre_inverse_relation(self):
+        "Test 13: Verify the inverse relation of book genres"
+        self.assertIn(
+            self.book_odoo,
+            self.genre_novel.book_ids,
+            "Odoo book should be listed in the Novel genre.",
+        )
+
+    def test_button_check_isbn_no_isbn(self):
+        "Test 14: Verify button action for a book with no ISBN"
+        book_no_isbn = self.Book.create({"name": "Book without ISBN"})
+        with self.assertRaises(
+            ValidationError, msg="Should raise an error for a missing ISBN."
+        ):
+            book_no_isbn.button_check_isbn()
