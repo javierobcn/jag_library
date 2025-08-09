@@ -53,6 +53,37 @@ class ProductTemplate(models.Model):
     edition = fields.Char()
     synopsis = fields.Html()
     reading_notes = fields.Html()
+    image_back_cover_1920 = fields.Image(
+        "Back Cover", max_width=1920, max_height=1920
+    )
+    image_back_cover_1024 = fields.Image(
+        "Back Cover 1024",
+        related="image_back_cover_1920",
+        max_width=1024,
+        max_height=1024,
+        store=True,
+    )
+    image_back_cover_512 = fields.Image(
+        "Back Cover 512",
+        related="image_back_cover_1920",
+        max_width=512,
+        max_height=512,
+        store=True,
+    )
+    image_back_cover_256 = fields.Image(
+        "Back Cover 256",
+        related="image_back_cover_1920",
+        max_width=256,
+        max_height=256,
+        store=True,
+    )
+    image_back_cover_128 = fields.Image(
+        "Back Cover 128",
+        related="image_back_cover_1920",
+        max_width=128,
+        max_height=128,
+        store=True,
+    )
     condition = fields.Selection(
         [
             ("new", _("New")),
@@ -133,25 +164,12 @@ class ProductTemplate(models.Model):
         }
         return result
 
-    #     @api.depends("publisher_id.country_id")
-    #     def _compute_publisher_country(self):
-    #         for book in self:
-    #             book.publisher_country_id = book.publisher_id.country_id
-
-    #     def _inverse_publisher_country(self):
-    #         for book in self:
-    #             book.publisher_id.country_id = book.publisher_country_id
-
-    #     def _search_publisher_country(self, operator, value):
-    #         return [("publisher_id.country_id", operator, value)]
-
-    #     publisher_country_id = fields.Many2one(
-    #         "res.country",
-    #         string="Publisher Country",
-    #         compute="_compute_publisher_country",
-    #         inverse="_inverse_publisher_country",
-    #         search="_search_publisher_country",
-    #     )
+    publisher_country_id = fields.Many2one(
+        "res.country",
+        string="Publisher Country",
+        related="publisher_id.country_id",
+        readonly=False,
+    )
 
 
 class ProductProduct(models.Model):
