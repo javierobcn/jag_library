@@ -51,13 +51,13 @@
                 <page string="Images" name="cover_image" invisible="is_book==False">
                         <group>
                             <group string="Cover Image">
-                                <div class="text-center">
-                                    <field name="image_512" widget="image" nolabel="1" />
+                                <div class="text-center" style="max-width: 512px; margin: 0 auto;">
+                                    <field name="image_1920" widget="image" nolabel="1" />
                                 </div>
                             </group>
                             <group string="Back Cover">
-                                <div class="text-center">
-                                    <field name="image_back_cover_512" widget="image" nolabel="1" />
+                                <div class="text-center" style="max-width: 512px; margin: 0 auto;">
+                                    <field name="image_back_cover_1920" widget="image" nolabel="1" />
                                 </div>
                             </group>
                         </group>
