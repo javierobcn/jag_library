@@ -15,33 +15,26 @@
                 <page string="Book Information" name="book_info" invisible="is_book==False">
                     <group>
                         <group string="Publication Details">
-                            <field name="binding" />
-                            <field name="edition" />
+                            <field name="publisher_id" domain="[('is_publisher', '=', True)]" context="{'default_is_company': True, 'default_is_publisher': True}" />
+                            <field name="publisher_country_id" />
                             <field name="publication_date" />
                             <field name="publication_year" />
+                            <field name="binding" />
+                            <field name="edition" />
                             <field name="number_of_pages" />
                             <field name="language" context="{'active_test': False}" />
                         </group>
                         <group string="Library Details">
+                            <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" context="{'default_is_author': True}" />
                             <field name="genre_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
                             <field name="isbn" />
                             <field name="condition" />
                             <field name="copies" />
-                            <field name="rating" widget="priority" />
-                        </group>
-                    </group>
-                    <group>
-                        <group string="Publisher and Authors">
-                            <field name="publisher_id" domain="[('is_publisher', '=', True)]" context="{'default_is_company': True, 'default_is_publisher': True}" />
-                            <field name="publisher_country_id" />
-                            <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" context="{'default_is_author': True}" />
+                            <field name="location" />
                         </group>
                     </group>
                     <group string="Synopsis">
                         <field name="synopsis" nolabel="1" />
-                    </group>
-                    <group string="Reading Notes">
-                        <field name="reading_notes" nolabel="1" />
                     </group>
                 </page>
                 <page string="Images" name="cover_image" invisible="is_book==False">
@@ -60,17 +53,19 @@
                     </page>
                     <page string="Reading Notes" name="reading_notes" invisible="is_book==False">
                         <group>
-                        <group string="Date started reading">
-                            <field name="date_start_reading" nolabel="1" />
+                            <group string="Date started reading">
+                                <field name="date_start_reading" nolabel="1" />
+                                </group>
+                            <group string="Date finished reading">
+                                <field name="date_end_reading" nolabel="1" />
                             </group>
-                        <group string="Date finished reading">
-                            <field name="date_end_reading" nolabel="1" />
-                        </group>
+                            <group string="Rating">
+                                <field name="rating" widget="priority" />
+                            </group>
                         </group>
                         <group string="Reading Notes">
                             <field name="reading_notes" nolabel="1" />
-                            </group>
-
+                        </group>
                     </page>
                 </xpath>
             <xpath expr="//header" position="inside">
@@ -174,7 +169,6 @@
     </record>
 
     <!-- MENÚS -->
-    <!-- <menuitem id="menu_books_separator" name="Books" parent="stock.menu_stock_inventory_control" sequence="9999" /> -->
     <menuitem id="menu_product_books" name="Book Catalog" parent="jag_library.menu_library_root" action="action_product_books_kanban" sequence="10"/>
     <menuitem id="menu_product_book_genre_config" name="Book Genres" parent="jag_library.menu_library_root" action="action_product_book_genre" sequence="20" />
 </odoo>
