@@ -36,10 +36,6 @@
                             <field name="publisher_country_id" />
                             <field name="author_ids" widget="many2many_tags" domain="[('is_author', '=', True)]" context="{'default_is_author': True}" />
                         </group>
-                        <group string="Reading">
-                            <field name="date_start_reading" />
-                            <field name="date_end_reading" />
-                        </group>
                     </group>
                     <group string="Synopsis">
                         <field name="synopsis" nolabel="1" />
@@ -62,7 +58,21 @@
                             </group>
                         </group>
                     </page>
-            </xpath>
+                    <page string="Reading Notes" name="reading_notes" invisible="is_book==False">
+                        <group>
+                        <group string="Date started reading">
+                            <field name="date_start_reading" nolabel="1" />
+                            </group>
+                        <group string="Date finished reading">
+                            <field name="date_end_reading" nolabel="1" />
+                        </group>
+                        </group>
+                        <group string="Reading Notes">
+                            <field name="reading_notes" nolabel="1" />
+                            </group>
+
+                    </page>
+                </xpath>
             <xpath expr="//header" position="inside">
                 <button name="button_check_isbn" type="object" string="Verify ISBN" class="oe_highlight" invisible="not is_book" />
             </xpath>
