@@ -93,12 +93,37 @@ class ProductTemplate(models.Model):
         ],
         default="new",
     )
+    location = fields.Char(
+        string="Location",
+        compute="_compute_location",
+        store=True,
+    )
 
     @api.depends("publication_date")
     def _compute_publication_year(self):
         for book in self:
             if book.publication_date:
                 book.publication_year = book.publication_date.year
+
+    @api.depends(
+        "product_variant_ids.stock_quant_ids.location_id",
+        "product_variant_ids.stock_quant_ids.quantity",
+        "qty_available"
+    )
+    def _compute_location(self):
+        for book in self:
+            # Filter quants to only include those in 'internal' locations
+            # with a positive quantity.
+            quants = book.product_variant_ids.mapped("stock_quant_ids")
+            quants_in_internal_locs = quants.filtered(
+                lambda q: q.location_id.usage == "internal" and q.quantity > 0
+            )
+            # Get the unique display names of these locations
+            locations = quants_in_internal_locs.mapped(
+                "location_id.display_name"
+            )
+            # Join the unique location names
+            book.location = ", ".join(list(set(locations)))
 
     _sql_constraints = [
         (

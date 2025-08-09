@@ -55,6 +55,8 @@ class TestBook(TransactionCase):
                 "author_ids": [(6, 0, [self.author_reis.id])],
                 "publisher_id": self.publisher_packt.id,
                 "genre_ids": [(6, 0, [self.genre_novel.id])],
+                "type": "consu",
+                "is_storable": True,
             }
         )
         self.book_quijote = self.Book.create(
@@ -63,7 +65,18 @@ class TestBook(TransactionCase):
                 "isbn": "9788491050759",
                 "author_ids": [(6, 0, [self.author_cervantes.id])],
                 "publisher_id": self.publisher_planeta.id,
+                "type": "consu",
+                "is_storable": True,
             }
+        )
+
+        # Stock locations for tests
+        self.stock_location = self.env.ref("stock.stock_location_stock")
+        self.shelf1 = self.env["stock.location"].create(
+            {"name": "Shelf 1", "location_id": self.stock_location.id}
+        )
+        self.shelf2 = self.env["stock.location"].create(
+            {"name": "Shelf 2", "location_id": self.stock_location.id}
         )
 
     # --- EXISTING TESTS (for reference) ---
@@ -78,8 +91,6 @@ class TestBook(TransactionCase):
         # check_isbn() is a method that returns a boolean.
         self.assertTrue(self.book_odoo.check_isbn())
         self.assertTrue(self.book_quijote.check_isbn())
-
-    # --- NEW TESTS ---
 
     def test_invalid_isbn(self):
         "Test 3: An invalid ISBN should not be accepted."
@@ -231,3 +242,53 @@ class TestBook(TransactionCase):
             ValidationError, msg="Should raise an error for a missing ISBN."
         ):
             book_no_isbn.button_check_isbn()
+
+    def test_book_location(self):
+        "Test 15: Book location is computed and updated correctly"
+        # 1. Set initial stock for the book to a single unit
+        self.env["stock.quant"]._update_available_quantity(
+            self.book_odoo.product_variant_id, self.shelf1, 1
+        )
+        # Force recompute and check the initial location
+        self.book_odoo.invalidate_recordset()
+        book_at_shelf1 = self.env["product.template"].browse(self.book_odoo.id)
+        self.assertEqual(book_at_shelf1.location, self.shelf1.display_name)
+
+        # 2. Move the entire stock to a new location
+        # Create and process the stock move
+        move = self.env["stock.move"].create(
+            {
+                "name": "Test Move",
+                "product_id": self.book_odoo.product_variant_id.id,
+                "product_uom_qty": 1,
+                "product_uom": self.book_odoo.uom_id.id,
+                "location_id": self.shelf1.id,
+                "location_dest_id": self.shelf2.id,
+                "state": "draft",
+            }
+        )
+        # Process the move through all required states
+        move._action_confirm()
+        move._action_assign()  # Reserve the stock
+
+        # Set the done quantity on the move line
+        for move_line in move.move_line_ids:
+            move_line.quantity = 1.0
+
+        # Mark as done
+        move.picked = True
+        move._action_done()  # Complete the move
+
+        # Verify move is done and update stock
+        self.assertEqual(move.state, "done", "Move should be in done state")
+        self.env["stock.quant"]._quant_tasks()
+
+        # Force recompute and check the new location
+        self.book_odoo.invalidate_recordset()
+        self.env.clear()  # Clear the environment cache
+        updated_book = self.env["product.template"].browse(self.book_odoo.id)
+        self.assertEqual(updated_book.location, self.shelf2.display_name)
+
+        # 3. Check that searching by location works
+        found_books = self.Book.search([("location", "=", self.shelf2.display_name)])
+        self.assertIn(updated_book, found_books)
