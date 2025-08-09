@@ -1,3 +1,6 @@
+# Copyright 2025 Javier Antó Garcia <hola@javieranto.com>
+# License AGPL-3.0 or later (https://ww
+
 from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
 

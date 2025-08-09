@@ -1,7 +1,7 @@
 {
     "name": "Library Management",
     "summary": "Manage library catalog",
-    "author": "Odoo Community Association (OCA), JAG",
+    "author": " Javier Antó Garcia, JAG",
     "license": "AGPL-3",
     "website": "https://github.com/javierobcn/jag_library",
     "version": "18.0.0.0.1",

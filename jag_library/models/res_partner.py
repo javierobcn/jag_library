@@ -1,5 +1,6 @@
 # Copyright 2025 Javier Antó Garcia <hola@javieranto.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3).
+
 from odoo import api, fields, models
 
 
@@ -18,8 +19,6 @@ class ResPartner(models.Model):
         domain=[("is_book", "=", True)],
     )
 
-    # Campo para los libros de los cuales este contacto es la EDITORIAL.
-    # Es la inversa del Many2one 'publisher_id' en product.template.
     published_book_ids = fields.One2many(
         "product.template",
         "publisher_id",
