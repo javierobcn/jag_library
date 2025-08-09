@@ -11,8 +11,10 @@
         "security/library_security.xml",
         "security/ir.model.access.csv",
         "views/res_partner.xml",
+        "views/jag_library_menu.xml",
         "views/book_genre_views.xml",
         "views/product_template.xml",
+
     ],
     "application": True,
 }
