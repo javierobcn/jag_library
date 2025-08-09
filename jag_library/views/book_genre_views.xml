@@ -5,9 +5,9 @@
         <field name="model">product.book.genre</field>
         <field name="arch" type="xml">
             <list string="Genres">
-                <field name="complete_name"/>
-                <field name="parent_id" />
                 <field name="color" widget="color_picker"/>
+                <field name="parent_id" />
+                <field name="complete_name"/>
             </list>
         </field>
     </record>
