@@ -2,6 +2,8 @@
 
 This module customizes Odoo 18 to enable advanced library management, treating books as a special class of products and managing authors and publishers as specific contacts. It adds a dedicated "Library" application menu for easy access to all library-related features.
 
+![alt text](static/description/jag_library.png)
+
 ## **✨ Key Features**
 
 * **Dedicated Library Application**: A new top-level "Library" menu provides centralized access to the Book Catalog and Genres.
@@ -23,6 +25,10 @@ This module customizes Odoo 18 to enable advanced library management, treating b
   * **Library User**: Read-only permissions.
   * **Library Manager**: Full create, read, update, and delete (CRUD) permissions.
 * **Automated Tests**: Includes a comprehensive test suite to ensure module stability and correctness.
+
+![alt text](static/description/jag_library_book.png)
+![alt text](static/description/jag_library_book_1.png)
+![alt text](static/description/jag_library_book_2.png)
 
 ## **🔧 Models and Views**
 
@@ -100,4 +106,3 @@ The module creates two user groups that you will find in **Settings \> Users & C
 
 This module is distributed under the **GNU GENERAL PUBLIC LICENSE** license. See the LICENSE file for more details.
 
-zz
