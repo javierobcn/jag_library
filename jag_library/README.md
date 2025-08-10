@@ -99,3 +99,5 @@ The module creates two user groups that you will find in **Settings \> Users & C
 ## **📄 License**
 
 This module is distributed under the **GNU GENERAL PUBLIC LICENSE** license. See the LICENSE file for more details.
+
+xx
