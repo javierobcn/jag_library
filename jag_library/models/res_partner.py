@@ -27,11 +27,6 @@ class ResPartner(models.Model):
 
     @api.onchange("company_type")
     def _onchange_company_type_set_partner_type(self):
-        """
-        Cuando el tipo de contacto cambia, resetea el booleano correspondiente.
-        - Si es un Individuo ('person'), no puede ser una editorial.
-        - Si es una Compañía ('company'), no puede ser un autor.
-        """
         if self.company_type == "person":
             self.is_publisher = False
         elif self.company_type == "company":

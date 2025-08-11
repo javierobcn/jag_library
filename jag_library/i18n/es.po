@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 18:35+0000\n"
-"PO-Revision-Date: 2025-08-01 18:35+0000\n"
+"POT-Creation-Date: 2025-08-11 16:00+0000\n"
+"PO-Revision-Date: 2025-08-11 16:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,15 +22,53 @@ msgid "Author"
 msgstr "Autor"
 
 #. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_kanban_view_books
+msgid "Author(s)"
+msgstr ""
+
+#. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_res_partner__authored_book_ids
 #: model:ir.model.fields,field_description:jag_library.field_res_users__authored_book_ids
 msgid "Authored Books"
 msgstr "Libros de autor"
 
 #. module: jag_library
+#: model:ir.actions.act_window,name:jag_library.action_library_author
+#: model:ir.ui.menu,name:jag_library.menu_library_author
 #: model_terms:ir.ui.view,arch_db:jag_library.view_res_partner_filter_library
 msgid "Authors"
 msgstr "Autores"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__image_back_cover_1920
+#: model:ir.model.fields,field_description:jag_library.field_product_template__image_back_cover_1920
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Back Cover"
+msgstr ""
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__image_back_cover_1024
+#: model:ir.model.fields,field_description:jag_library.field_product_template__image_back_cover_1024
+msgid "Back Cover 1024"
+msgstr ""
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__image_back_cover_128
+#: model:ir.model.fields,field_description:jag_library.field_product_template__image_back_cover_128
+msgid "Back Cover 128"
+msgstr ""
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__image_back_cover_256
+#: model:ir.model.fields,field_description:jag_library.field_product_template__image_back_cover_256
+msgid "Back Cover 256"
+msgstr ""
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__image_back_cover_512
+#: model:ir.model.fields,field_description:jag_library.field_product_template__image_back_cover_512
+msgid "Back Cover 512"
+msgstr ""
 
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_product__binding
@@ -73,7 +111,7 @@ msgstr "Título del libro y fecha de publicación deben ser únicos."
 
 #. module: jag_library
 #: model:ir.actions.act_window,name:jag_library.action_product_books_kanban
-#: model:ir.ui.menu,name:jag_library.menu_books_separator
+#: model_terms:ir.ui.view,arch_db:jag_library.view_product_book_genre_form
 msgid "Books"
 msgstr "Libros"
 
@@ -86,6 +124,11 @@ msgstr "Categorías Hijas"
 #: model_terms:ir.actions.act_window,help:jag_library.action_product_books_kanban
 msgid "Click \"New\" to add the first book to your catalog."
 msgstr "Clic en \"Nuevo\" para añadir el primer libro a tu catálogo."
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_book_genre__color
+msgid "Color"
+msgstr ""
 
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_book_genre__complete_name
@@ -113,6 +156,11 @@ msgstr "Contactos"
 #: model:ir.model.fields,field_description:jag_library.field_product_template__copies
 msgid "Copies"
 msgstr "Copias"
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_kanban_view_books
+msgid "Cover"
+msgstr ""
 
 #. module: jag_library
 #: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
@@ -154,6 +202,16 @@ msgid "Date Start Reading"
 msgstr "Fecha Inicio de Lectura"
 
 #. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Date finished reading"
+msgstr ""
+
+#. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Date started reading"
+msgstr ""
+
+#. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_book_genre__display_name
 msgid "Display Name"
 msgstr "Nombre para Mostrar"
@@ -183,6 +241,11 @@ msgid "Good"
 msgstr "Bueno"
 
 #. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_kanban_view_books
+msgid "Géneros"
+msgstr ""
+
+#. module: jag_library
 #. odoo-python
 #: code:addons/jag_library/models/product_template.py:0
 #: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__hardcover
@@ -192,7 +255,20 @@ msgstr "Cubierta dura"
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_book_genre__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__isbn
+#: model:ir.model.fields,field_description:jag_library.field_product_template__isbn
+msgid "ISBN"
+msgstr ""
+
+#. module: jag_library
+#. odoo-python
+#: code:addons/jag_library/models/product_template.py:0
+#: model:ir.model.constraint,message:jag_library.constraint_product_template_isbn_uniq
+msgid "ISBN must be unique."
+msgstr "ISBN debe ser único."
 
 #. module: jag_library
 #. odoo-python
@@ -201,10 +277,19 @@ msgid "ISBN {} is invalid"
 msgstr "ISBN {} es inválido"
 
 #. module: jag_library
-#: model:ir.model.fields,field_description:jag_library.field_product_product__is_book
-#: model:ir.model.fields,field_description:jag_library.field_product_template__is_book
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
+msgid "Images"
+msgstr ""
+
+#. module: jag_library
 #: model_terms:ir.ui.view,arch_db:jag_library.product_template_search_view_inherit_is_book
 msgid "Is Book"
+msgstr "Es Libro"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__is_book
+#: model:ir.model.fields,field_description:jag_library.field_product_template__is_book
+msgid "Is a book"
 msgstr "Es Libro"
 
 #. module: jag_library
@@ -218,12 +303,6 @@ msgstr "Es autor"
 #: model:ir.model.fields,field_description:jag_library.field_res_users__is_publisher
 msgid "Is publisher"
 msgstr "Es editor"
-
-#. module: jag_library
-#: model:ir.model.fields,field_description:jag_library.field_product_product__isbn
-#: model:ir.model.fields,field_description:jag_library.field_product_template__isbn
-msgid "Isbn"
-msgstr "ISBN"
 
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_product__language
@@ -242,9 +321,31 @@ msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: jag_library
+#: model:ir.module.category,name:jag_library.module_category_services_library
+#: model:ir.ui.menu,name:jag_library.menu_library_root
+msgid "Library"
+msgstr "Biblioteca"
+
+#. module: jag_library
+#: model:res.groups,name:jag_library.group_library_manager
+msgid "Library / Manager"
+msgstr ""
+
+#. module: jag_library
+#: model:res.groups,name:jag_library.group_library_user
+msgid "Library / User"
+msgstr ""
+
+#. module: jag_library
 #: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
 msgid "Library Details"
 msgstr "Detalles de Biblioteca"
+
+#. module: jag_library
+#: model:ir.model.fields,field_description:jag_library.field_product_product__location
+#: model:ir.model.fields,field_description:jag_library.field_product_template__location
+msgid "Location"
+msgstr ""
 
 #. module: jag_library
 #: model:res.groups,name:jag_library.library_group_manager
@@ -288,14 +389,24 @@ msgid "Other"
 msgstr "Otro"
 
 #. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_kanban_view_books
+msgid "Pages"
+msgstr ""
+
+#. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_book_genre__parent_id
-msgid "Parent"
+msgid "Parent Category"
 msgstr "Padre"
 
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_book_genre__parent_path
 msgid "Parent Path"
 msgstr "Path Padre"
+
+#. module: jag_library
+#: model:ir.module.category,description:jag_library.module_category_services_library
+msgid "Permisos y roles para la gestión de la Biblioteca."
+msgstr ""
 
 #. module: jag_library
 #: model:ir.model,name:jag_library.model_product_template
@@ -346,15 +457,19 @@ msgstr "Libros Publicados"
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_product__publisher_id
 #: model:ir.model.fields,field_description:jag_library.field_product_template__publisher_id
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_kanban_view_books
 msgid "Publisher"
 msgstr "Editor"
 
 #. module: jag_library
-#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
-msgid "Publisher and Authors"
-msgstr "Editor y Autores"
+#: model:ir.model.fields,field_description:jag_library.field_product_product__publisher_country_id
+#: model:ir.model.fields,field_description:jag_library.field_product_template__publisher_country_id
+msgid "Publisher Country"
+msgstr ""
 
 #. module: jag_library
+#: model:ir.actions.act_window,name:jag_library.action_library_publisher
+#: model:ir.ui.menu,name:jag_library.menu_library_publisher
 #: model_terms:ir.ui.view,arch_db:jag_library.view_res_partner_filter_library
 msgid "Publishers"
 msgstr "Editores"
@@ -362,24 +477,16 @@ msgstr "Editores"
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_product__rating
 #: model:ir.model.fields,field_description:jag_library.field_product_template__rating
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
 msgid "Rating"
 msgstr "Calificación"
 
 #. module: jag_library
-#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
-msgid "Reading"
-msgstr "Lectura"
-
-#. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_product__reading_notes
 #: model:ir.model.fields,field_description:jag_library.field_product_template__reading_notes
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
 msgid "Reading Notes"
 msgstr "Notas de Lectura"
-
-#. module: jag_library
-#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
-msgid "Reading notes"
-msgstr "Notas de lectura"
 
 #. module: jag_library
 #. odoo-python
@@ -391,6 +498,7 @@ msgstr "Espiral"
 #. module: jag_library
 #: model:ir.model.fields,field_description:jag_library.field_product_product__synopsis
 #: model:ir.model.fields,field_description:jag_library.field_product_template__synopsis
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
 msgid "Synopsis"
 msgstr "Sinopsis"
 
@@ -424,6 +532,11 @@ msgid "eBook"
 msgstr "Ebook"
 
 #. module: jag_library
+#: model_terms:ir.ui.view,arch_db:jag_library.product_template_kanban_view_books
+msgid "pages"
+msgstr ""
+
+#. module: jag_library
 #. odoo-python
 #: code:addons/jag_library/models/product_template.py:0
 #: model:ir.model.fields.selection,name:jag_library.selection__product_template__binding__paperback
@@ -431,18 +544,7 @@ msgid "paperback"
 msgstr "Tapa blanda"
 
 #. module: jag_library
-#: model_terms:ir.ui.view,arch_db:jag_library.product_template_form_view_inherit_is_book
-msgid "synopsis"
-msgstr "sinopsis"
-
-#. module: jag_library
 #. odoo-python
 #: code:addons/jag_library/models/product_template.py:0
 msgid "{} ISBN is invalid"
 msgstr "IsBN {} es inválido"
-
-#. module: jag_library
-#. odoo-python
-#: code:addons/jag_library/models/product_template.py:0
-msgid "ISBN must be unique."
-msgstr "ISBN debe ser único."
