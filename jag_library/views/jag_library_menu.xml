@@ -1,8 +1,60 @@
 <odoo>
-    <record id="menu_library_root" model="ir.ui.menu">
-        <field name="name">Library</field>
-        <field name="sequence" eval="10"/>
-        <field name="web_icon">jag_library,static/description/icon.png</field>
-        <field name="groups_id" eval="[(6, 0, [ref('jag_library.library_group_user')])]"/>
+    <!-- ACCIONES -->
+    <record id="action_product_books_kanban" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="view_id" ref="jag_library.product_template_kanban_view_books"/>
+        <field name="domain">[('is_book', '=', True)]</field>
+        <field name="context">{'default_is_book': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No books created yet!
+            </p>
+            <p>
+                Click "New" to add the first book to your catalog.
+            </p>
+        </field>
     </record>
+
+    <record id="action_product_book_genre" model="ir.actions.act_window">
+        <field name="name">Book Genres</field>
+        <field name="res_model">product.book.genre</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new genre of book
+            </p>
+        </field>
+    </record>
+
+    <record id="action_library_author" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('is_author', '=', True)]</field>
+        <field name="context">{'default_is_author': True}</field>
+    </record>
+
+    <record id="action_library_publisher" model="ir.actions.act_window">
+        <field name="name">Publishers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('is_publisher', '=', True)]</field>
+        <field name="context">{'default_is_publisher': True}</field>
+    </record>
+
+    <!-- MENÚS -->
+    <menuitem id="menu_library_root" name="Library" sequence="10"
+        web_icon="jag_library,static/description/icon.png"
+        groups="jag_library.library_group_user"/>
+
+    <menuitem id="menu_product_books" name="Book Catalog" parent="menu_library_root"
+        action="action_product_books_kanban" sequence="10"/>
+    <menuitem id="menu_product_book_genre_config" name="Book Genres" parent="menu_library_root"
+        action="action_product_book_genre" sequence="20"/>
+    <menuitem id="menu_library_author" name="Authors" parent="menu_library_root"
+        action="action_library_author" sequence="30"/>
+    <menuitem id="menu_library_publisher" name="Publishers" parent="menu_library_root"
+        action="action_library_publisher" sequence="40"/>
 </odoo>
