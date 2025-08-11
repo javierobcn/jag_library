@@ -90,7 +90,7 @@
         <field name="name">product.template.kanban.books</field>
         <field name="model">product.template</field>
         <field name="arch" type="xml">
-            <kanban records_per_row="4">
+            <kanban default_order="location,sequence asc" records_per_row="4">
                 <field name="name"/>
                 <field name="image_1920"/>
                 <field name="publisher_id"/>
@@ -139,6 +139,33 @@
                     }
                 </style>
             </kanban>
+        </field>
+    </record>
+
+    <record id="product_template_tree_view_inherit_sequence" model="ir.ui.view">
+        <field name="name">product.template.tree.view.inherit.sequence</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="sequence" widget="handle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_view_books" model="ir.ui.view">
+        <field name="name">product.template.search.books</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Libros">
+                <field name="name" string="Name"/>
+                <field name="publisher_id" string="Publisher"/>
+                <field name="genre_ids" string="Genre"/>
+                <field name="author_ids" string="Author"/>
+                <separator/>
+
+
+            </search>
         </field>
     </record>
 </odoo>

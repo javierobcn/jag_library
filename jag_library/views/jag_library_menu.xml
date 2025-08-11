@@ -6,7 +6,8 @@
         <field name="view_mode">kanban,list,form</field>
         <field name="view_id" ref="jag_library.product_template_kanban_view_books"/>
         <field name="domain">[('is_book', '=', True)]</field>
-        <field name="context">{'default_is_book': True}</field>
+        <field name="context">{'default_is_book': True,'order_by': 'sequence'}</field>
+        <field name="search_view_id" ref="product_template_search_view_books"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No books created yet!
