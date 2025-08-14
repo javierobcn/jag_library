@@ -14,13 +14,15 @@ class ProductTemplate(models.Model):
     copies = fields.Integer(default=1)
     rating = fields.Selection(
         selection=[
-            ("0", "0"),
-            ("1", "1"),
-            ("2", "2"),
-            ("3", "3"),
-            ("4", "4"),
-            ("5", "5"),
+            ('0', 'Not Rated'),
+            ('1', 'Very Bad'),
+            ('2', 'Fair'),
+            ('3', 'Good'),
+            ('4', 'Very Good'),
+            ('5', 'Masterpiece')
         ],
+        string='Rating',
+        default='0'
     )
     date_start_reading = fields.Date()
     date_end_reading = fields.Date()
@@ -101,6 +103,12 @@ class ProductTemplate(models.Model):
         string="Location",
         compute="_compute_location",
         store=True,
+    )
+
+    sequence = fields.Integer(
+        string='Secuencia',
+        default=10,
+        help="Determines the order in the list view. The lowest number is displayed first."
     )
 
     @api.depends("publication_date")
