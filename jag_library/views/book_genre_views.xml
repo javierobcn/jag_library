@@ -6,8 +6,8 @@
         <field name="arch" type="xml">
             <list string="Genres">
                 <field name="color" widget="color_picker"/>
-                <field name="parent_id" />
                 <field name="complete_name"/>
+                <field name="parent_id" />
             </list>
         </field>
     </record>
