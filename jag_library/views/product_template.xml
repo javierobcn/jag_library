@@ -103,7 +103,7 @@
                             <div class="o_kanban_image" style="flex: 0 0 150px;">
                                 <img class="o_kanban_image_fill position-relative w-100" t-att-src="!record.image_1920.raw_value ? '/web/static/src/img/placeholder.png' : `/web/image/product.template/${record.id.raw_value}/image_1920`" alt="Cover"/>
                             </div>
-                            <div class="oe_kanban_details d-flex flex-column flex-grow-1 p-1" style="min-height: 180px;">
+                            <div class="oe_kanban_details d-flex flex-column flex-grow-1 p-1" style="min-height: 180px">
                                 <div>
                                     <strong class="o_kanban_record_title mb-2 d-block"><field name="name"/></strong>
                                     <div class="text-muted">
@@ -117,17 +117,22 @@
                                             <i class="oi oi-community mt-1 flex-shrink-0"/>
                                             <div class="w-100"><field name="author_ids" widget="many2many_tags"/></div>
                                         </div>
+                                        <div class="d-flex align-items-start mt-2">
+                                            <i class="oi oi-community mt-1 flex-shrink-0"/>
+                                            <div class="w-100"><field name="rating" widget="priority"/></div>
+                                        </div>
+
                                     </div>
                                 </div>
 
-                                <div class="mt-auto pt-2 border-top">
-                                    <div t-if="record.genre_ids.raw_value.length > 0" class="d-flex align-items-start" title="Géneros">
-                                        <i class="oi oi-tag me-2 mt-1 flex-shrink-0"/>
-                                        <div class="w-100"><field name="genre_ids" widget="many2many_tags" options="{'color_field': 'color'}" /></div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
+                        <div t-if="record.genre_ids.raw_value.length > 0" class="d-flex align-items-start mt-2" title="Géneros">
+                            <i class="oi oi-tag me-2 mt-1 flex-shrink-0"/>
+                            <div class="w-100"><field name="genre_ids" widget="many2many_tags" options="{'color_field': 'color'}" /></div>
+                        </div>
+
                     </t>
                 </templates>
                 <style>

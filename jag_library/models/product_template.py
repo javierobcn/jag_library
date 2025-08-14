@@ -14,6 +14,7 @@ class ProductTemplate(models.Model):
     copies = fields.Integer(default=1)
     rating = fields.Selection(
         selection=[
+            ("0", "0"),
             ("1", "1"),
             ("2", "2"),
             ("3", "3"),
