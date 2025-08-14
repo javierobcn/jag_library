@@ -13,7 +13,7 @@ class ProductTemplate(models.Model):
     number_of_pages = fields.Integer()
     copies = fields.Integer(default=1)
     rating = fields.Selection(
-        [
+        selection=[
             ('0', 'Not Rated'),
             ('1', 'Very Bad'),
             ('2', 'Fair'),
